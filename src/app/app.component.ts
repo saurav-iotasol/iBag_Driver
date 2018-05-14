@@ -1,22 +1,62 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HomeComponent } from '../pages/home/home.component';
+import { LoginComponent } from '../pages/authorization/login/login.component';
+import { RouteListComponent } from '../pages/route-list/route-list.component';
+import { TicketListComponent } from '../pages/ticket-list/ticket-list.component';
+import { RouteNavigationComponent } from '../pages/route-navigation/route-navigation.component';
 
-import { HomePage } from '../pages/home/home';
 @Component({
-  templateUrl: 'app.html'
+    templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+    @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
-  }
+    rootPage: any;
+    pages: Array<{ title: string, component: any, icon: string }>;
+
+    constructor(
+        public platform: Platform,
+        public menu: MenuController,
+        public statusBar: StatusBar,
+        public splashScreen: SplashScreen,
+    ) {
+        this.initializeApp();
+        this.pages = [
+            { title: 'Login', component: LoginComponent, icon: 'md-log-in' },
+            { title: 'Routes', component: RouteListComponent, icon: 'home' },
+            { title: 'Navigation', component: RouteNavigationComponent, icon: 'home' },
+        ];
+    }
+
+    ngOnInit() {
+
+    }
+
+    initializeApp() {
+        this.platform.ready().then((resp) => {
+            if (resp == 'cordova') {
+            }
+            this.statusBar.styleDefault();
+            this.splashScreen.hide();
+
+            let self = this;
+            self.rootPage = HomeComponent;
+        })
+    }
+
+    ionViewWillEnter() {
+        this.menu.swipeEnable(false);
+    }
+
+    ionViewWillLeave() {
+        this.menu.swipeEnable(true);
+    }
+
+    openPage(page) {
+        this.menu.close();
+        this.nav.push(page.component);
+    }
 }
-

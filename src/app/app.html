@@ -1,1 +1,22 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar>
+            <h2>Driver</h2>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content main-menu>
+        <ion-list>
+            <button menuClose ion-item no-padding *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon padding-left>
+                    <ion-icon name="{{p.icon}}"></ion-icon>
+                </ion-icon>
+                {{p.title}}
+                
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

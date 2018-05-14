@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-left>Select Ticket</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list ticket-list *ngIf="ticketsLoaded">
+        <ion-item *ngFor="let ticket of ticketList; let i = index;" no-padding class="fade-in-item" (click)="selectTicket(ticket)">
+            <ion-label col-12>
+                <span>{{ticket.routeName}}</span>
+            </ion-label>
+        </ion-item>
+        <ion-item *ngIf="ticketList.length == 0 && ticketsLoaded">
+            <h3 text-center>No tickets found!</h3>
+        </ion-item>
+    </ion-list>
+</ion-content>

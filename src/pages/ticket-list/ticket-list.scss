@@ -1,0 +1,25 @@
+ticket-list {
+    [ticket-list] {
+        .item-inner {
+            padding: 0 !important;
+            border-bottom: 1px solid theme-colors('blendModes','border') !important;
+        }
+        ion-label {
+            margin: 0px;
+            font-weight: 500;
+            padding: 16px;
+            color: theme-colors('blendModes', 'background') !important;
+            display: table;
+            span {
+                display: table-cell;
+                vertical-align: middle;
+                ion-icon {
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+    .show {
+        animation: fadeIn 1200ms;
+    }
+}

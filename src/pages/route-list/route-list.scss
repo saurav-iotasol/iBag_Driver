@@ -1,0 +1,33 @@
+route-list {
+    [route-list] {
+        .item-inner {
+            padding: 0 !important;
+            border-bottom: none !important;
+        }
+        ion-label {
+            margin: 0px;
+            font-weight: 500;
+            padding: 16px;
+            color: theme-colors('blendModes', 'background') !important;
+            display: table;
+            span {
+                display: table-cell;
+                vertical-align: middle;
+                ion-icon {
+                    font-size: 25px;
+                }
+            }
+        }
+        .expanded-list {
+            margin: 0px;
+            padding: 0 16px 16px 16px;
+        }
+    }
+    [route-list]>div {
+        border-bottom: 1px solid theme-colors('blendModes', 'border') !important;
+        margin-top: 1px;
+    }
+    .show {
+        animation: fadeIn 1200ms;
+    }
+}

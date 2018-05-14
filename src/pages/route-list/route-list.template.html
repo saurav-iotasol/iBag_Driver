@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-left>Routes</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list route-list *ngIf="routesLoaded">
+        <div *ngFor="let route of routeList; let i = index;">
+            <ion-item no-padding class="fade-in-item">
+                <ion-label col-12>
+                    <span (click)="selectRoute(route)">{{route.routeName}}</span>
+                    <span float-right (click)="toggleRoute(route)">
+                        <ion-icon name="arrow-dropdown-circle"></ion-icon>
+                    </span>
+                </ion-label>
+            </ion-item>
+            <ion-label class="expanded-list" [ngClass]="route.isExpanded? 'show':'hide'">
+                {{route.fromTime}}
+                {{route.toTime}}
+            </ion-label>
+        </div>
+        <ion-item *ngIf="routeList.length == 0 && routesLoaded">
+            <h3 text-center>No Routes found!</h3>
+        </ion-item>
+    </ion-list>
+</ion-content>

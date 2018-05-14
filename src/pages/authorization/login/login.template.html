@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar header-color>
+        <ion-title text-left>Login</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="image-div">
+        <ion-thumbnail>
+            <img src={{logo}}>
+        </ion-thumbnail>
+    </div>
+
+    <ion-grid>
+        <ion-row wrap padding>
+            <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                <form>
+                    <ion-item no-padding>
+                        <ion-input type="text" name="email" placeholder="Email" required></ion-input>
+                    </ion-item>
+
+                    <ion-item margin-top no-padding>
+                        <ion-input type="password" name="password" placeholder="Password" required></ion-input>
+                    </ion-item>
+
+                    <button ion-button round full button-primary (click)="login()" class="mt-20">LOGIN</button>
+                    <h4 text-center>OR</h4>
+                </form>
+
+                <ion-label class="mt-20" text-center color="primary">
+                    <a href="#" (click)="navigateToForgotPassword()">Forgot Password?</a>
+                </ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
